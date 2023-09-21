@@ -11,19 +11,19 @@ import Counter from './components/Counter.vue';
     :start="15"
     /> -->
 
-    <indecision/>
+    <Indecision/>
   </div>
   
 </template>
 
 <script>
-import Counter from './components/Counter.vue'
-import indecision from './components/indecision.vue';
+// import Counter from './components/Counter.vue'
+import Indecision from './components/indecision.vue';
 
 export default {
   components: { 
     // Counter, 
-    indecision }, 
+    Indecision }, 
   name: 'App',
 }
 </script>

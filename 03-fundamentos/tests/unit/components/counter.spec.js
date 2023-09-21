@@ -12,14 +12,14 @@ describe ('Counter Component', ()=>{
         wrapper = shallowMount(Counter)
     })
 
-    // test('Debe hacer match con el snapshot', () => { 
+    // test('Debe hacer match con el snapshot: ', () => { 
 
     //     const wrapper = shallowMount(Counter)
         
     //     expect(wrapper.html()).toMatchSnapshot()
     // })
 
-    test('h2 debe tener el valor por defecto "Counter"', () => 
+    test('h2 debe tener el valor por defecto "Counter": ', () => 
    { 
 
         const h2Value = wrapper.find('h2').text()
@@ -27,7 +27,7 @@ describe ('Counter Component', ()=>{
         expect (h2Value).toBe('Counter')
     })
 
-    // test('El valor por defecto en la etiqueta <p> debe ser 100', () => { 
+    // test('El valor por defecto en la etiqueta <p> debe ser 100:', () => { 
         // Wrapper 
         // pTags
         // const pTags = wrapper.findAll('p')
@@ -38,7 +38,7 @@ describe ('Counter Component', ()=>{
     //     expect((value).text()).toBe('100');
     // })
 
-    test('Debe incrementar y decrementar el contador', async() => { 
+    test('Debe incrementar y decrementar el contador:', async() => { 
 
         const [increaseBtn, decreaseBtn] = wrapper.findAll('button')
         
@@ -55,7 +55,7 @@ describe ('Counter Component', ()=>{
         expect(value).toBe('101');   
            
     })
-    test('Debe establecer el valor por defecto ', () => {
+    test('Debe establecer el valor por defecto: ', () => {
 
         // const start = wrapper.props('start')
         // otra forma
@@ -64,5 +64,14 @@ describe ('Counter Component', ()=>{
         const value = wrapper.find('[data-testid="counter"]').text();
         expect (Number(value)).toBe( start );
     });
+    test('Debe mostrar la prop Title :  ', () => {
+        const title =  'Este es el title del test'
 
+        const wrapper= shallowMount(Counter, {
+            props: {
+                title
+            }
+        })
+        expect (wrapper.find('h2').text()).toBe('Este es el title del test')
+    });
 })
