@@ -1,0 +1,12 @@
+html, body {
+    background-color: #F4E869;
+    margin: 0px;
+    height:100vh;
+    width: 98vw;
+    
+}
+h1{
+    color: #FFFF;
+    font-weight: 800;
+    margin:0;
+}
