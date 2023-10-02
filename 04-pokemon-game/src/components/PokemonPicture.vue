@@ -40,6 +40,9 @@ export default {
 }
 img {
     height: 200px;
+    position: absolute;
+    width:100vw;
+    margin-left: -50vw;
     user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;

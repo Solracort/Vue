@@ -27,7 +27,13 @@
             list-style-type: none;
         }
         li {
-            background-color: white;
+            padding:2%;
+            background: rgb(2,0,36);
+            background: linear-gradient(90deg, rgba(2,0,36,1) 0%, 
+                                               rgba(9,9,121,1) 35%,
+                                               rgba(0,212,255,1) 100%); 
+            color:#F4E869;
+            font-weight: bolder;
             border-radius: 5px;
             border: 1px solid rgba(0, 0, 0, 0.2);
             cursor: pointer;
@@ -36,7 +42,7 @@
         }
 
         li:hover {
-            background-color: rgba(0, 0, 0, 0.05);
+            background-color: rgba(2, 0, 36, 1);
         }
 
         .options-container {
