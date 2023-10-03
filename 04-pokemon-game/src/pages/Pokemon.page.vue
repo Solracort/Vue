@@ -1,5 +1,6 @@
 <template>
-    <br/>
+    <PokemonRound :roundPoints = "round"/>
+    <PokemonScore :scorePoints = "score"/>
     <h1 v-if="!pokemon">Espere por favor... </h1>
     <div v-else="pokemon" 
          class="pokemon-general-container">
@@ -17,7 +18,7 @@
         <h2 class="fade-in">{{ message }}</h2>
         <button class="newGameButton"
             @click="newGame">
-            Nuevo Juego
+            Siguiente
         </button>
     </template>        
        
@@ -26,13 +27,16 @@
 <script>
 import PokemonPicture from '@/components/PokemonPicture.vue';
 import PokemonOptions from '@/components/PokemonOptions.vue'
-
+import PokemonScore from '@/components/PokemonScore.vue'
+import PokemonRound from '@/components/PokemonRound.vue'
 import getPokemonOptions from '@/helpers/getPokemonOptions' ;
 
 export default {
     name: 'PokemonPage',
     components: { PokemonPicture, 
                   PokemonOptions, 
+                  PokemonScore,
+                  PokemonRound,
                 },
     data() {
         return {
@@ -40,7 +44,9 @@ export default {
           pokemon: null,
           showPokemon: false,
           showAnswer: false,
-          message: ''
+          message: '', 
+          score: 0,
+          round: 1,
         }
     }, 
     methods : {
@@ -55,10 +61,18 @@ export default {
             this.showAnswer = true 
             if (selectedId===this.pokemon.id){
                 this.message = `Correcto, es ${this.pokemon.name} !!!`
+                this.score += 10
+                
             } else {
                 this.message = `Oops, lo siento, era ${this.pokemon.name}`
+                this.score -= 10
             }
-            
+            this.round +=1
+            if (this.round>5){
+                this.message += ` Game Over - FINAL SCORE: ${this.score}`
+                this.round=1
+                this.score=0
+            }
         },
         newGame (){
             this.pokemon = null 
@@ -77,7 +91,10 @@ export default {
 <style scoped>
 
 .pokemon-general-container{
-    border:5px #423cb4 solid; 
+    background: rgb(147,125,127);
+    background: radial-gradient(circle, 
+               rgba(147,125,127,1) 0%, rgba(203,213,224,1) 79%);
+    border:5px #DC143C solid; 
     border-radius: 5px;
     margin:4px;
     margin-top:1%;
@@ -102,5 +119,11 @@ export default {
 .newGameButton:hover{
     cursor:pointer;
     background-color:crimson;
+}
+@media screen and (min-width: 768px) {
+    .pokemon-general-container{
+        width:40%;
+        margin:auto;
+    }
 }
 </style>
