@@ -67,10 +67,10 @@ export default {
                 this.message = `Oops, lo siento, era ${this.pokemon.name}`
                 this.score -= 10
             }
-            this.round +=1
-            if (this.round>5){
+            
+            if (this.round===5){
                 this.message += ` Game Over - FINAL SCORE: ${this.score}`
-                this.round=1
+                this.round=0
                 this.score=0
             }
         },
@@ -80,6 +80,7 @@ export default {
             this.showAnswer = false
             this.pokemonArr = []
             this.mixPokemonArray()
+            this.round +=1
         }
     },
     mounted(){

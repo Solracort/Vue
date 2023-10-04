@@ -40,4 +40,12 @@ export default {
         font-size:25px;
         font-weight: bold;
     }
+    @media screen and (min-width: 768px) {
+        .score-container{
+            width:20%;
+        }
+        .score-points{
+            font-size:45px;
+        }
+    }
 </style>
